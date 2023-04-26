@@ -1,8 +1,8 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from '../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 
+import { PrismaService } from '../prisma/prisma.service';
 import { AuthDto } from './dto';
 import { Tokens } from './types';
 
@@ -118,7 +118,7 @@ export class AuthService {
       },
     });
 
-    if (!user) {
+    if (!user || !user.hashedRt) {
       throw exception;
     }
 

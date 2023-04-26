@@ -7,8 +7,10 @@ type JwtPayload = {
   email: string;
 };
 
+export const JWT = 'jwt';
+
 @Injectable()
-export class AccessTokenStrategy extends PassportStrategy(Strategy, 'jwt') {
+export class AccessTokenStrategy extends PassportStrategy(Strategy, JWT) {
   constructor() {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
